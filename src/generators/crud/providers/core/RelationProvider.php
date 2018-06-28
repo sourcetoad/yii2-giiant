@@ -346,16 +346,10 @@ EOS;
         $pageParam = Inflector::slug("page-{$name}");
         $firstPageLabel = $this->generator->generateString('First');
         $lastPageLabel = $this->generator->generateString('Last');
-        $code = "'<div class=\"table-responsive\">'\n . ";
-        $code .= <<<EOS
-\\yii\\grid\\GridView::widget([
-    'layout' => '{summary}{pager}<br/>{items}{pager}',
+        $code = <<<EOS
+GridView::widget([
     'dataProvider' => new \\yii\\data\\ActiveDataProvider([
         {$query},
-        'pagination' => [
-            'pageSize' => 20,
-            'pageParam'=>'{$pageParam}',
-        ]
     ]),
     'pager'        => [
         'class'          => yii\widgets\LinkPager::className(),
@@ -365,7 +359,6 @@ EOS;
     'columns' => [\n $columns]
 ])
 EOS;
-        $code .= "\n . '</div>' ";
 
         return $code;
     }
