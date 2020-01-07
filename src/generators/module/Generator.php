@@ -50,10 +50,6 @@ class Generator extends \yii\gii\generators\module\Generator
             $modulePath.'/views/default/index.php',
             $this->render('view.php')
         );
-        $files[] = new CodeFile(
-            $modulePath.'/traits/ActiveRecordDbConnectionTrait.php',
-            $this->render('db-connection-trait.php')
-        );
 
         return $files;
     }
